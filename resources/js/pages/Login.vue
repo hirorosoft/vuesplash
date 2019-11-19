@@ -64,11 +64,24 @@ export default {
     }
   },
   methods: {
-    login () {
-      console.log(this.loginForm)
+    async login () {
+      // console.log(this.loginForm)
+
+      // authストアのloginアクションを呼び出す
+      await this.$store.dispatch('auth/login', this.loginForm)
+
+      // トップページに移動する
+      this.$router.push('/')
     },
-    register () {
-      console.log(this.registerForm)
+    async register () {
+      // console.log(this.registerForm)
+    
+      // authストアのresigterアクションを呼び出す
+      await this.$store.dispatch('auth/register', this.registerForm)
+
+      // トップページに移動する
+      this.$router.push('/')
+
     },
   },
 
