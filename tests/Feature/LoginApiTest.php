@@ -30,13 +30,13 @@ class LoginApiTest extends TestCase
             'password' => 'secret',
         ]);
 
-        $response->assertStatus(422);
+        // $response->assertStatus(422);
 
-        // $response
-        //     ->assertStatus(200)
-        //     ->assertJson(['name' => $this->user->name]);
+        $response
+            ->assertStatus(200)
+            ->assertJson(['name' => $this->user->name]);
 
-        // $this->assertAuthenticatedAs($this->user);
+        $this->assertAuthenticatedAs($this->user);
     }
 
 
