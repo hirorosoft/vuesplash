@@ -17,6 +17,9 @@ import store from "./store";
 // ルートコンポーネントをインポートする
 import App from './App.vue'
 
+
+
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -36,10 +39,16 @@ import App from './App.vue'
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
-    el: "#app",
-    router,
-    store,
-    components: { App },
-    template: `<App />`
-});
+const createApp = async () => {
+    await store.dispatch('auth/currentUser')
+
+    new Vue({
+        el: '#app',
+        router,
+        store,
+        components: { App },
+        template: '<App />'
+    })
+}
+
+createApp()
